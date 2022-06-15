@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import readline from 'readline';
-import {moveImages} from './images';
-import {movePdfs} from './pdfs';
-import {moveVideos} from './videos';
+import { moveFiles } from './moveFiles';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -31,7 +29,7 @@ rl.question('Insira o endereço do diretório completo: ', directory => {
 
     //Move all images to folder 'images'
     if (images.length > 0) {
-      moveImages(directory, images);
+      moveFiles(directory, images, 'Images');
     }
 
     //---------PDFS-----------
@@ -41,7 +39,7 @@ rl.question('Insira o endereço do diretório completo: ', directory => {
 
     //Move all pdfs to folder 'pdfs'
     if (pdfs.length > 0) {
-      movePdfs(directory, pdfs);
+      moveFiles(directory, pdfs, 'Pdfs');
     }
 
     //---------VIDEOS-----------
@@ -56,7 +54,7 @@ rl.question('Insira o endereço do diretório completo: ', directory => {
 
     //Move all videos to folder 'videos'
     if (videos.length > 0) {
-      moveVideos(directory, videos);
+      moveFiles(directory, videos, 'Videos');
     }
 
     rl.close();
